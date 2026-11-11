@@ -8,35 +8,41 @@ let userSession = {
     userHash: null
 };
 
+// src/electron/xboxBridge.js
 module.exports = {
     login: function (success, error, args) {
-        // Create a hidden or visible Electron BrowserWindow to handle Microsoft's OAuth login popup
-        const authWindow = new BrowserWindow({
-            width: 500,
-            height: 700,
-            show: true,
-            webPreferences: {
-                nodeIntegration: false,
-                contextIsolation: true
-            }
-        });
+        // args[0] contains the string passed from index.js
+        const clientId = args[0]; 
 
-        // Microsoft Live / Azure OAuth endpoint URL
-        const clientId = "YOUR_MICROSOFT_AZURE_CLIENT_ID";
-        const redirectUri = "https://login.live.com/oauth20_desktop.srf";
-        const authUrl = `https://login.live.com/oauth20_authorize.srf?client_id=${clientId}&response_type=code&redirect_uri=${encodeURIComponent(redirectUri)}&scope=service::user.auth.xboxlive.com::MBI_SSL`;
+        if (!clientId) {
+            return error("Client ID is missing!");
+        }
+        else {
+            const redirectUri = "https://login.live.com/oauth20_desktop.srf";
+            const authUrl = `https://login.live.com/oauth20_authorize.srf?client_id=${clientId}&response_type=code&redirect_uri=${encodeURIComponent(redirectUri)}&scope=service::user.auth.xboxlive.com::MBI_SSL`;
 
-        authWindow.loadURL(authUrl);
+            // Create a hidden or visible Electron BrowserWindow to handle Microsoft's OAuth login popup
+            const authWindow = new BrowserWindow({
+                width: 500,
+                height: 700,
+                show: true,
+                webPreferences: {
+                    nodeIntegration: false,
+                    contextIsolation: true
+                }
+            });
+            
+            authWindow.loadURL(authUrl);
 
-        // Intercept navigation to catch the authorization code
-        authWindow.webContents.on('will-redirect', (event, newUrl) => {
-            if (newUrl.startsWith(redirectUri)) {
-                const urlParams = new URLSearchParams(new URL(newUrl).search);
-                const authCode = urlParams.get('code');
+            // Intercept navigation to catch the authorization code
+            authWindow.webContents.on('will-redirect', (event, newUrl) => {
+                if (newUrl.startsWith(redirectUri)) {
+                    const urlParams = new URLSearchParams(new URL(newUrl).search);
+                    const authCode = urlParams.get('code');
                 
-                authWindow.close();
+                    authWindow.close();
 
-                if (authCode) {
+                    if (authCode) {
                     // Step next: Exchange authCode for tokens (RpsTicket -> XToken -> XSTS)
                     exchangeCodeForXboxTokens(authCode)
                         .then(sessionData => {
@@ -44,11 +50,12 @@ module.exports = {
                             success(userSession);
                         })
                         .catch(err => error(err.message));
-                } else {
+                    } else {
                     error("Authorization code missing from redirect URL.");
+                    }
                 }
-            }
-        });
+            });
+        }
     },
 
     getGamertag: function (success, error, args) {
