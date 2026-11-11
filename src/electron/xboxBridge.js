@@ -19,7 +19,7 @@ module.exports = {
         }
         else {
             const redirectUri = "https://login.live.com/oauth20_desktop.srf";
-            const authUrl = `https://login.live.com/oauth20_authorize.srf?client_id=${clientId}&response_type=code&redirect_uri=${encodeURIComponent(redirectUri)}&scope=service::user.auth.xboxlive.com::MBI_SSL`;
+            const authUrl = "https://login.live.com/oauth20_authorize.srf?client_id=${clientId}&response_type=code&redirect_uri=${encodeURIComponent(redirectUri)}&scope=service::user.auth.xboxlive.com::MBI_SSL";
 
             // Create a hidden or visible Electron BrowserWindow to handle Microsoft's OAuth login popup
             const authWindow = new BrowserWindow({
