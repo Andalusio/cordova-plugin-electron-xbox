@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin id="cordova-plugin-xbox-services" version="1.0.0"
+        xmlns="http://apache.org/ns/cordova/plugins/1.0"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+    
+    <name>CordovaPluginXboxServices</name>
+    <platform name="electron">
+        <config-file target="res/electron/config.json" parent="plugins">
+            <key>CordovaPluginXboxServices</key>
+            <string>CordovaPluginXboxServices</string>
+        </config-file>
+        
+        <!-- Frontend Interface -->
+        <js-module src="www/xbox.js" name="xbox">
+            <climb target="window.xbox" />
+        </js-module>
+
+        <!-- Electron Main-Process Bridge -->
+        <source-file src="src/electron/xboxBridge.js" target-dir="src/electron/" />
+    </platform>
+</plugin>
