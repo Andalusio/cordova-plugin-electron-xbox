@@ -1,0 +1,6 @@
+{
+  "name": "cordova-plugin-xbox-services-electron",
+  "version": "1.0.0",
+  "description": "Node bridge backend for Xbox services on Cordova Electron",
+  "dependencies": {}
+}
