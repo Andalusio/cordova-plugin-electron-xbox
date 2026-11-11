@@ -10,7 +10,7 @@ cordova plugin add cordova-plugin-electron-xbox
 Alternatively, you can download this plugin as a zip file. Once it's downloaded, open the zip file, unload the root folder into your C drive, then type the following in Command Promot to install:
 
 ```console
-cordova plugin add --link C:\cordova-plugin-electron-xbox
+cordova plugin add --link C:\cordova-plugin-electron-xbox-main
 ```
 
 # Usage
