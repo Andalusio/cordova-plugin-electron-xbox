@@ -1,7 +1,7 @@
 var exec = require('cordova/exec');
 
 var XboxService = {
-    login: function(successCallback, errorCallback) {
+    login: function(clientId, successCallback, errorCallback) {
         exec(successCallback, errorCallback, "CordovaPluginXboxServices", "login", []);
     },
     
