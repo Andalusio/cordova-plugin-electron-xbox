@@ -16,11 +16,11 @@ cordova plugin add --link C:\cordova-plugin-electron-xbox-main
 # Usage
 
 ## Logging In
-In order to get the plugin to work, you'll need an Azure client ID, which will be used within your project's index.js file. For example:
+In order to get the plugin to work, you'll need your app's "MSA app Id," which can be found via your app's listing at https://partner.microsoft.com under "Apps and Games." Register your app if you haven't already to obtain one. Your MSA app Id will be used within your project's index.js file. For example:
 
 ```console
 async function handleXboxLogin() {
-    const clientId = "YOUR_AZURE_CLIENT_ID";
+    const clientId = "12345678-abcd-efg-ab12-12345678ab";
     
     window.xbox.login(clientId, 
         (session) => {
