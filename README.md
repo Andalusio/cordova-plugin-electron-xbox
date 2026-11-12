@@ -48,7 +48,7 @@ async function fetchPlayerGamertag() {
 ## Achievements
 
 ```console
-//Viewing Achievements:
+//Earning Achievements:
 async function unlockGameAchievement(achievementId) {
     try {
         console.log("Unlocking achievement: ${achievementId}");
@@ -68,7 +68,7 @@ async function unlockGameAchievement(achievementId) {
     }
 }
 
-//Earning Achievements:
+//Viewing Achievements:
 const { shell } = require('electron');
 
 function openNativeXboxOverlay() {
