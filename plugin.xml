@@ -2,19 +2,15 @@
 <plugin id="cordova-plugin-electron-xbox" version="1.0.0"
         xmlns="http://apache.org/ns/cordova/plugins/1.0">
     
-    <name>CordovaPluginXboxServices</name>
+    <name>CordovaPluginElectronXbox</name>
+    
     <platform name="electron">
-        <config-file target="config.json" parent="plugins">
-            <key>CordovaPluginXboxServices</key>
-            <string>CordovaPluginXboxServices</string>
-        </config-file>
-        
-        <!-- Frontend Interface -->
+        <!-- Frontend JavaScript Interface -->
         <js-module src="www/xbox.js" name="xbox">
             <climb target="window.xbox" />
         </js-module>
 
-        <!-- Electron Main-Process Bridge -->
+        <!-- Electron Main-Process Bridge Script -->
         <source-file src="src/electron/xboxBridge.js" target-dir="src/electron/" />
     </platform>
 </plugin>
