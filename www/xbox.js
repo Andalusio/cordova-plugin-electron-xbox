@@ -2,15 +2,15 @@ var exec = require('cordova/exec');
 
 var XboxService = {
     login: function(successCallback, errorCallback) {
-        exec(successCallback, errorCallback, "CordovaPluginXboxServices", "login", []);
+        exec(successCallback, errorCallback, "CordovaPluginElectronXbox", "login", []);
     },
     
     getGamertag: function(successCallback, errorCallback) {
-        exec(successCallback, errorCallback, "CordovaPluginXboxServices", "getGamertag", []);
+        exec(successCallback, errorCallback, "CordovaPluginElectronXbox", "getGamertag", []);
     },
 
     unlockAchievement: function(achievementId, successCallback, errorCallback) {
-        exec(successCallback, errorCallback, "CordovaPluginXboxServices", "unlockAchievement", [achievementId]);
+        exec(successCallback, errorCallback, "CordovaPluginElectronXbox", "unlockAchievement", [achievementId]);
     }
 };
 
