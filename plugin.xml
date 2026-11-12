@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin id="cordova-plugin-electron-xbox" version="1.0.0"
-        xmlns="http://apache.org/ns/cordova/plugins/1.0"
-        xmlns:android="http://schemas.android.com/apk/res/android">
+        xmlns="http://apache.org/ns/cordova/plugins/1.0">
     
     <name>CordovaPluginXboxServices</name>
     <platform name="electron">
-        <config-file target="res/electron/config.json" parent="plugins">
+        <config-file target="config.json" parent="plugins">
             <key>CordovaPluginXboxServices</key>
             <string>CordovaPluginXboxServices</string>
         </config-file>
