@@ -1,0 +1,22 @@
+{
+  "name": "cordova-plugin-electron-xbox",
+  "version": "1.0.0",
+  "description": "Cordova Plugin for Xbox Live activities",
+  "cordova": {
+    "id": "cordova-plugin-electron-xbox",
+    "platforms": [
+      "electron"
+    ]
+  },
+  "dependencies": {
+    "axios": "^1.6.0"
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-electron",
+    "xbox-live",
+    "xbox"
+  ],
+  "author": "Omar Kaj Software",
+  "license": "MIT"
+}
