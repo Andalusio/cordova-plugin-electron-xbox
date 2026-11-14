@@ -1,3 +1,5 @@
+NB: THIS PLUGIN IS UNDER CONSTRUCTION!
+
 This plugin is designed to integrate Xbox Live features into Cordova Electron desktop apps. This is ideal for anyone coding with JavaScript.
 
 # Installation
