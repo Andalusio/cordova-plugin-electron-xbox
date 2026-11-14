@@ -21,7 +21,7 @@ module.exports = {
         }
 
         const redirectUri = "https://login.live.com/oauth20_desktop.srf";
-        const authUrl = `https://login.live.com/oauth20_authorize.srf?client_id=${clientId}&response_type=code&redirect_uri=${encodeURIComponent(redirectUri)}&scope=service::user.auth.xboxlive.com::MBI_SSL`;
+        const authUrl = "https://login.live.com/oauth20_authorize.srf?client_id=${clientId}&response_type=code&redirect_uri=${encodeURIComponent(redirectUri)}&scope=service::user.auth.xboxlive.com::MBI_SSL";
 
         const authWindow = new BrowserWindow({
             width: 500,
@@ -79,7 +79,7 @@ module.exports = {
         }
 
         // Placeholder for real Xbox Live Achievement REST API POST request
-        console.log(`Unlocking achievement ${achievementId} for user ${userSession.gamertag}`);
+        console.log("Unlocking achievement ${achievementId} for user ${userSession.gamertag}");
         
         // Simulating a successful API response
         success({ status: "Unlocked", achievementId });
