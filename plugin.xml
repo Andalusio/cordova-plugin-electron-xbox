@@ -2,7 +2,7 @@
 <plugin id="cordova-plugin-electron-xbox" version="1.0.0"
         xmlns="http://apache.org/ns/cordova/plugins/1.0">
     
-    <name>CordovaPluginElectronXbox</name>
+    <name>Xbox Services for Codova</name>
     
     <platform name="electron">
         <!-- Frontend JavaScript Interface -->
