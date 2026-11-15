@@ -7,7 +7,8 @@
     <platform name="electron">
         <!-- Frontend JavaScript Interface -->
         <js-module src="www/xbox.js" name="xbox">
-            <climb target="window.xbox" />
+            	<climb target="window.xbox" />
+		<clobbers target="cordova.plugins.xbox"/>
         </js-module>
 
         <!-- Electron Main-Process Bridge Script -->
