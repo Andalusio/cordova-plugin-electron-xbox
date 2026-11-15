@@ -17,64 +17,48 @@ cordova plugin add --link C:\cordova-plugin-electron-xbox-main
 
 # Usage
 
+In order to get the plugin to work, you'll need to initiaize it under "deviceready" first. For example:
+
+```console
+document.addEventListener('deviceready', async () => {
+    await window.PlayGamesV2.initialize();
+    console.log("Logged into Google Play Games v2 automatically!");
+}, false)
+```
+
 ## Logging In
 In order to get the plugin to work, you'll need your app's "MSA app Id," which can be found via your app's listing at https://partner.microsoft.com under "Apps and Games." Register your app if you haven't already to obtain one. Your MSA app Id will be used within your project's index.js file. For example:
 
 ```console
-async function handleXboxLogin() {
-    const clientId = "12345678-abcd-efg-ab12-12345678ab";
-    
-    window.xbox.login(clientId, 
-        (session) => {
-            console.log("Logged in:", session.gamertag);
-        },
-        (error) => {
-            console.error("Login failed:", error);
-        }
-    );
+function handleXboxLogin() {
+    try{
+        xbox.login();
+    }
+    catch(e){
+        console.warn("User failed or cancelled sign-in:", e);
+    }
 }
 ```
 ## Retrieving Gamertag
-
+The following method of signing in is ideal for retrieving the player's Gamertag:
 ```console
-async function fetchPlayerGamertag() {
-    return new Promise((resolve, reject) => {
-        window.xbox.getGamertag(
-            (gamertag) => resolve(gamertag),
-            (error) => reject(error)
-        );
-    });
+function handleXboxLogin() {
+    try{
+        const player = xbox.login();
+        console.log(player.gamertag);
+    }
+    catch(e){
+        console.warn("User failed or cancelled sign-in:", e);
+    }
 }
 ```
 
 ## Achievements
 
 ```console
-//Earning Achievements:
-async function unlockGameAchievement(achievementId) {
-    try {
-        console.log("Unlocking achievement: ${achievementId}");
-        
-        const result = await new Promise((resolve, reject) => {
-            window.xbox.unlockAchievement(
-                achievementId,
-                (response) => resolve(response),
-                (err) => reject(err)
-            );
-        });
+//Unlock an Achievements:
+xbox.unlockAchievement(achievementId);
 
-        console.log("Achievement unlocked successfully:", result);
-        showAchievementPopup(achievementId);
-    } catch (error) {
-        console.error("Failed to unlock achievement:", error);
-    }
-}
-
-//Viewing Achievements:
-const { shell } = require('electron');
-
-function openNativeXboxOverlay() {
-    // Opens the Windows Xbox game bar or companion app via URI scheme
-    shell.openExternal("xbox://");
-}
+//Show all Achievements:
+xbox.getAchievements();
 ```
