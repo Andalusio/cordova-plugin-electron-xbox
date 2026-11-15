@@ -6,12 +6,11 @@
     
     <platform name="electron">
         <!-- Frontend JavaScript Interface -->
-        <js-module src="www/xbox.js" name="xbox">
-            	<climb target="window.xbox" />
+        <js-module src="www/XboxServices.js" name="XboxServices">
 		<clobbers target="cordova.plugins.xbox"/>
         </js-module>
 
         <!-- Electron Main-Process Bridge Script -->
-        <source-file src="src/electron/xboxBridge.js" target-dir="src/electron/" />
+        <!--source-file src="src/electron/xboxBridge.js" target-dir="src/electron/" /-->
     </platform>
 </plugin>
