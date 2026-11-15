@@ -21,7 +21,7 @@ In order to get the plugin to work, you'll need to initiaize it under "devicerea
 
 ```console
 document.addEventListener('deviceready', async () => {
-    await window.PlayGamesV2.initialize();
+    await window.xbox.initialize();
     console.log("Logged into Google Play Games v2 automatically!");
 }, false)
 ```
@@ -32,7 +32,7 @@ In order to get the plugin to work, you'll need your app's "MSA app Id," which c
 ```console
 function handleXboxLogin() {
     try{
-        xbox.login();
+        window.xbox.login();
     }
     catch(e){
         console.warn("User failed or cancelled sign-in:", e);
@@ -44,7 +44,7 @@ The following method of signing in is ideal for retrieving the player's Gamertag
 ```console
 function handleXboxLogin() {
     try{
-        const player = xbox.login();
+        const player = window.xbox.login();
         console.log(player.gamertag);
     }
     catch(e){
@@ -57,8 +57,8 @@ function handleXboxLogin() {
 
 ```console
 //Unlock an Achievements:
-xbox.unlockAchievement(achievementId);
+window.xbox.unlockAchievement(achievementId);
 
 //Show all Achievements:
-xbox.getAchievements();
+window.xbox.getAchievements();
 ```
