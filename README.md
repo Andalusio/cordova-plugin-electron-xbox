@@ -40,17 +40,9 @@ function handleXboxLogin() {
 }
 ```
 ## Retrieving Gamertag
-The following method of signing in is ideal for retrieving the player's Gamertag:
 ```console
-function handleXboxLogin() {
-    try{
-        const player = window.xbox.login();
-        console.log(player.gamertag);
-    }
-    catch(e){
-        console.warn("User failed or cancelled sign-in:", e);
-    }
-}
+const player = window.xbox.getProfile();
+console.log(player.displayName);
 ```
 
 ## Achievements
